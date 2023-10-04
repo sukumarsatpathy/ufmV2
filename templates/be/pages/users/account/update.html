@@ -1,0 +1,95 @@
+{% extends 'be/base.html' %}
+{% load static %}
+{% block meta %}
+        <title>Edit {{userAccount.full_name}} - {{webSettingsUniversal.title}}</title>
+        <meta name="description" content="{{webSettingsUniversal.metaDescription}}"/>
+        <meta name="keywords" content="{{webSettingsUniversal.metaKeyword}}"/>
+        <meta property="og:title" content="Edit {{obj.full_name}} -{{webSettingsUniversal.title}}"/>
+        <meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+        <meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-column flex-column-fluid">
+    <div class="app-content flex-column-fluid mt-10">
+        <div class="app-container container-xxl">
+            <div class="card">
+                <div class="card-header ribbon ribbon-end ribbon-clip">
+                    <div class="ribbon-label">
+                        Update
+                        <span class="ribbon-inner bg-warning"></span>
+                    </div>
+                    <div class="card-title fw-bold m-0">
+                        <span class="px-2">Account Details of {{userAccount.full_name}} &#128073;</span>
+                        <div class="symbol symbol-circle symbol-30px overflow-hidden me-3">
+                            <div class="symbol-label">
+                                <img src="{% if userAccount.image %}{{userAccount.image.url}}{% else %}{{webSettingsUniversal.default_user.url}}{% endif %}" alt="{{userAccount.full_name}}" class="w-100"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="card mb-5 mb-xl-10">
+                        <div class="collapse show">
+                            <form action="{% url 'userEdit' userAccount.pk %}" method="post" class="form"
+                                  enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="card-body border-top p-9">
+                                    {% if userForm.errors %}
+                                        {% for field in userForm %}
+                                            {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{field.name|title}} - {{error|escape}}</strong>
+                                            </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        {% for error in userForm.non_field_errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{error|escape}}</strong>
+                                        </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{userForm.first_name}}
+                                                <label class="required">First Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{userForm.last_name}}
+                                                <label class="required">Last Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{userForm.email}}
+                                                <label class="required">Email Address</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{userForm.status}}
+                                                <label class="required">Select Status</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                    <a href="{% url 'userList' %}" class="btn btn-light-info me-3">Discard</a>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extraJS %}
+<!--begin::Custom Javascript(used for this page only)-->
+
+<!--end::Custom Javascript-->
+{% endblock %}

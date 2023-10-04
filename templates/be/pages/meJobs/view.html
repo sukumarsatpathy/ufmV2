@@ -1,0 +1,182 @@
+{% extends 'be/base.html' %}
+{% load static %}
+{% block meta %}
+<title>View {{singleJob.title}} Details - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}"/>
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}"/>
+<meta property="og:title" content="View {{singleJob.title}} Details - {{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-column flex-column-fluid">
+    <div class="app-content flex-column-fluid mt-10">
+        <div class="app-container container-xxl">
+            <div class="row gy-5 g-xl-10 justify-content-center">
+                <div class="col-xl-10 mb-xl-10">
+                    <div class="card card-flush h-lg-100">
+                        <div class="card-header flex-nowrap pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-dark">{{singleJob.title}} Details</span>
+                            </h3>
+                        </div>
+                        <div class="card-body p-9">
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Full Name</label>
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">{{singleJob.salutation}} {{singleJob.name}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Title</label>
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">{{singleJob.title}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Company Name</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.company}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Country</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.country}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Mobile No.</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.mobile}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Email</label>
+                                <div class="col-lg-8 fv-row">
+                                    <span class="fw-semibold text-gray-800 fs-6">{{singleJob.email}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Role Title Offered</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.role}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Positions Opened</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.positions}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Educational Qualification</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.education}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Technical Certification</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.certification}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Total Interview process</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.total_interview}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Joining Mandate</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.joining}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Total Experience</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.experience}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Employment Type</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.employment_type}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Job Location</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.job_location}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Work Mode</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.work_mode}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Currency</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.currency}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Gross CTC</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.gross_ctc}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Net CTCx</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.net_ctc}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Visa offered by</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.visa_offered}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Family Visa/Medical Insurance</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.family_visa_offered}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Annual return air tickets for family</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.air_ticket}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Children Education allowance</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.children_education}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Job Description</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleJob.jd}}</span>
+                                </div>
+                            </div>
+                            <p class="text-center pt-5">
+                                <a href="{% url 'listViewMe' %}" class="btn btn-info">Discard</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extraJS %}
+<!--begin::Vendors Javascript(used for this page only)-->
+<!--end::Javascript-->
+{% endblock %}

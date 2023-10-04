@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # 3rd Party Apps
     'ckeditor',
     'ckeditor_uploader',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.webSettingsUnivarsal',
             ],
         },
     },

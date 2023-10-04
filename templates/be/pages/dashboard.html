@@ -1,0 +1,16 @@
+{% extends 'be/base.html' %}
+{% load static %}
+
+{% block meta %}
+        <title>Dashboard - {{webSettingsUniversal.title}}</title>
+        <meta name="description" content="{{webSettingsUniversal.meta_description}}"/>
+        <meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}"/>
+        <meta property="og:title" content="Dashboard - {{webSettingsUniversal.title}}"/>
+        <meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+        <meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+
+{% block content %}
+
+
+{% endblock %}

@@ -1,0 +1,213 @@
+{% extends 'be/base.html' %}
+{% load static %}
+{% block meta %}
+<title>View Resumes - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}"/>
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}"/>
+<meta property="og:title" content="View Resumes - {{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-column flex-column-fluid">
+    <div class="app-content flex-column-fluid mt-10">
+        <div class="app-container container-xxl">
+            <p class="text-center">
+                <a href="{% url 'cvListView' %}" class="btn btn-info">Discard</a>
+                <a href="{{singleCV.cv.url}}" target="_blank" class="btn btn-primary">View CV</a>
+            </p>
+            <div class="row gy-5 g-xl-10">
+                <div class="col-xl-6 mb-xl-10">
+                    <div class="card card-flush h-lg-100">
+                        <div class="card-header flex-nowrap pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-dark">Personal Details</span>
+                            </h3>
+                        </div>
+                        <div class="card-body p-9">
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Full Name</label>
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">{{singleCV.fullname}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Email</label>
+                                <div class="col-lg-8 fv-row">
+                                    <span class="fw-semibold text-gray-800 fs-6">{{singleCV.email}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Mobile No.</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.mobile}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Date of Birth</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.dob}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Marital Status</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.marital_status}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Passport Details</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.passport_no}} | {{singleCV.passport_exp}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Visa Details</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.current_visa_category}} | {{singleCV.visa_validity}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 mb-xl-10">
+                    <div class="card card-flush h-lg-100">
+                        <div class="card-header flex-nowrap pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-dark">Professional Details</span>
+                            </h3>
+                        </div>
+                        <div class="card-body p-9">
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Current Role</label>
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">{{singleCV.current_role}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Qualification</label>
+                                <div class="col-lg-8 fv-row">
+                                    <span class="fw-semibold text-gray-800 fs-6">{{singleCV.qualification}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Experience</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.experience}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Key Skills</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.key_skills}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Roles You are looking For</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.roles}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Current Company</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.current_company}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Nationality</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.nationality}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Location Preference</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.location_preference}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-5 g-xl-10">
+                <div class="col-xl-6 mb-xl-10">
+                    <div class="card card-flush h-lg-100">
+                        <div class="card-header flex-nowrap pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-dark">Miscellaneous Details</span>
+                            </h3>
+                        </div>
+                        <div class="card-body p-9">
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Willing to Relocate?</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.willing_to_relocate}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Employment Status</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.employment_status}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Notice Period</label>
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">{{singleCV.notice_period}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Interview Schedule</label>
+                                <div class="col-lg-8 fv-row">
+                                    <span class="fw-semibold text-gray-800 fs-6">{{singleCV.interview_schedule}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Employment Mode</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.employment_mode}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Rate Card</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.rate_card}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Currency</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.currency}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Current Salary</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.current_salary}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Expected Salary</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.expected_salary}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-7">
+                                <label class="col-lg-4 fw-semibold text-muted">Others</label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">{{singleCV.others}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extraJS %}
+<!--begin::Vendors Javascript(used for this page only)-->
+<!--end::Javascript-->
+{% endblock %}

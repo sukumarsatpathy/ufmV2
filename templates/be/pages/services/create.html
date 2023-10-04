@@ -1,0 +1,141 @@
+{% extends 'be/base.html' %}
+{% load static %}
+{% block meta %}
+<title>Add Service - {{webSettingsUniversal.title}}</title>
+<meta charset="utf-8"/>
+<meta name="description" content="{{frontendSettingsUniversal.metaDescription}}"/>
+<meta name="keywords" content="{{frontendSettingsUniversal.metaKeyword}}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Add Service - {{frontendSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{userAccount.full_name}} - {{frontendSettingsUniversal.title}}"/>
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-column flex-column-fluid">
+    <div class="app-content flex-column-fluid mt-10">
+        <div class="app-container container-xxl">
+            <div class="card">
+                <div class="card-header ribbon ribbon-end ribbon-clip">
+                    <div class="ribbon-label">
+                        Create
+                        <span class="ribbon-inner bg-primary"></span>
+                    </div>
+                    <div class="card-title fw-bold m-0">Add Service</div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="card mb-5 mb-xl-10">
+                        <div class="collapse show">
+                            <form action="{% url 'serviceAddView' %}" method="post" class="form"
+                                  enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="card-body border-top p-9">
+                                    {% if sform.errors %}
+                                        {% for field in sform %}
+                                            {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{field.name|title}} - {{error|escape}}</strong>
+                                            </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        {% for error in sform.non_field_errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{error|escape}}</strong>
+                                        </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{sform.category}}
+                                                <label class="required">Category</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{sform.title}}
+                                                <label class="required">Title</label>
+                                            </div>
+                                        </div>
+                                         <div class="col-lg-6">
+                                            <div class="mb-7">
+                                                <label class="required">Short Description</label>
+                                                {{sform.short_description}}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-7">
+                                                <label class="required">Process</label>
+                                                {{sform.process}}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="mb-7">
+                                                 <label class="required">Key Aspects</label>
+                                                {{sform.key_aspects}}
+                                                {{sform.media}}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-7">
+                                                <label class="required">Image</label>
+                                                {{sform.image}}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-7">
+                                                <label class="required">Banner</label>
+                                                {{sform.banner}}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{sform.meta_title}}
+                                                <label class="required">Meta Title</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{sform.meta_description}}
+                                                <label class="required">Meta Description</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{sform.meta_keywords}}
+                                                <label class="required">Meta Keywords</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{sform.status}}
+                                                <label class="required">Status</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                    <a href="{% url 'serviceListView' %}" class="btn btn-light-info me-3">Discard</a>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extraJS %}
+<!--begin::Custom Javascript(used for this page only)-->
+<script>
+$('.kt_docs_maxlength_basic').maxlength({
+    warningClass: "badge badge-warning",
+    limitReachedClass: "badge badge-success"
+});
+</script>
+<!--end::Custom Javascript-->
+{% endblock %}

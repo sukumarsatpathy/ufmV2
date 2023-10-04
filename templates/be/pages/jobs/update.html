@@ -1,0 +1,170 @@
+{% extends 'be/base.html' %}
+{% load static %}
+{% block meta %}
+        <title>Update {{single_job.title}} - {{webSettingsUniversal.title}}</title>
+        <meta name="description" content="{{webSettingsUniversal.metaDescription}}"/>
+        <meta name="keywords" content="{{webSettingsUniversal.metaKeyword}}"/>
+        <meta property="og:title" content="Edit {{obj.full_name}} -{{webSettingsUniversal.title}}"/>
+        <meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+        <meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-column flex-column-fluid">
+    <div class="app-content flex-column-fluid mt-10">
+        <div class="app-container container-xxl">
+            <div class="card">
+                <div class="card-header ribbon ribbon-end ribbon-clip">
+                    <div class="ribbon-label">
+                        Update
+                        <span class="ribbon-inner bg-warning"></span>
+                    </div>
+                    <div class="card-title fw-bold m-0">
+                        <span class="px-2">Update Details Of &#128073; {{single_job.role}}</span>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="card mb-5 mb-xl-10">
+                        <div class="collapse show">
+                            <form action="{% url 'jobsEditView' single_job.slug %}" method="post" class="form"
+                                  enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="card-body border-top p-9">
+                                    {% if jform.errors %}
+                                        {% for field in jform %}
+                                            {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{field.name|title}} - {{error|escape}}</strong>
+                                            </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        {% for error in jform.non_field_errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{error|escape}}</strong>
+                                        </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.role}}
+                                                <label class="required">Role</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.experience}}
+                                                <label class="required">Experience</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.location}}
+                                                <label class="required">Location</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.package}}
+                                                <label class="required">Package</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.industry_type}}
+                                                <label class="required">Industry Type</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.department}}
+                                                <label class="required">Department</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.employment_type}}
+                                                <label class="required">Employment Type</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.role_category}}
+                                                <label class="required">Role Category</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.education}}
+                                                <label class="required">Education</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.key_skills}}
+                                                <label class="required">Key Skills</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.requirement}}
+                                                <label class="required">Requirements</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.opening}}
+                                                <label class="required">Opening</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-7">
+                                                <label class="required mb-2">Job Description</label><br/>
+                                                {{jform.jd}}
+                                                {{jform.media}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.meta_title}}
+                                                <label class="required">Meta Title</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.meta_description}}
+                                                <label class="required">Meta Description</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{jform.meta_keywords}}
+                                                <label class="required">Meta Keywords</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                    <a href="{% url 'jobsListView' %}" class="btn btn-light-info me-3">Discard</a>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extraJS %}
+<!--begin::Custom Javascript(used for this page only)-->
+<script>
+    $('.kt_docs_maxlength_basic').maxlength({
+        warningClass: "badge badge-warning",
+        limitReachedClass: "badge badge-success"
+    });
+</script>
+<!--end::Custom Javascript-->
+{% endblock %}
