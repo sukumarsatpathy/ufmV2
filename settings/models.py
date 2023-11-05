@@ -2,6 +2,12 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+status_choices = (
+    ('Published', 'Published'),
+    ('Draft', 'Draft'),
+)
+
+
 class WebSettings(models.Model):
     # Brand
     title = models.CharField(_('Brand Name'), max_length=255, null=True)
@@ -31,6 +37,16 @@ class WebSettings(models.Model):
         verbose_name = 'Web Setting'
         verbose_name_plural = 'Web Settings'
         db_table = 'settings-website'
+
+    def __str__(self):
+        return self.title
+
+
+class Size(models.Model):
+    title = models.CharField(_('Size Name'), max_length=50)  # Size like "S", "M", "L" etc.
+    status = models.CharField(_('Status'), max_length=20, choices=status_choices, default='Published', null=True)
+    created = models.DateTimeField(_('Created Date'), auto_now_add=True, editable=False)
+    modified = models.DateTimeField(_('Modified Date'), auto_now=True, editable=False)
 
     def __str__(self):
         return self.title

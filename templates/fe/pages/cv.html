@@ -1,0 +1,264 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="{{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper bg-white">
+    <div class="container pt-7 pb-20 pt-md-14 pb-md-21 text-center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container pb-14 pb-md-16">
+        <div class="row">
+            <div class="col-lg-10 col-xl-10 col-xxl-10 mx-auto mt-n20">
+                <div class="card">
+                    <div class="card-body p-11 text-center">
+                        <h2 class="display-4 mb-7 text-center"><span class="text-primary">For Candidates:</span> Submit your Credentials here</h2>
+                        <form id="cvForm" action="{% url 'cvSubmit' %}" method="post" class="text-start mb-3"
+                              enctype="multipart/form-data" novalidate>
+                            {% csrf_token %}
+                            <div class="card-body">
+                                {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{field.name|title}} - {{error|escape}}</strong>
+                                        </div>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {% for error in form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{error|escape}}</strong>
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.salutation}}
+                                            <label class="required">Salutation<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.fullname}}
+                                            <label class="required">Full Name<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.email}}
+                                            <label class="required">Email<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.mobile}}
+                                            <label class="required">Mobile Number<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.dob}}
+                                            <label class="required">Date of Birth (YYYY-MM-DD)<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.marital_status}}
+                                            <label class="required">Marital Status<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.qualification}}
+                                            <label class="required">Qualification<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.experience}}
+                                            <label class="required">Total Experience (in Yrs)<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.current_role}}
+                                            <label class="required">Current Role<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.current_company}}
+                                            <label class="required">Current Company<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.key_skills}}
+                                            <label class="required">Key Skills<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.roles}}
+                                            <label class="required">Role you are looking for<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.location_preference}}
+                                            <label class="required">Any Location Preferred<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.nationality}}
+                                            <label class="required">Nationality<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.passport_no}}
+                                            <label class="required">Passport No<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.passport_exp}}
+                                            <label class="required">Passport Expiry<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.current_visa_category}}
+                                            <label class="required">Current Visa Category<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.visa_validity}}
+                                            <label class="required">Visa Validity<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.current_location}}
+                                            <label class="required">Current Location<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.willing_to_relocate}}
+                                            <label class="required">Willing to Relocate?<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.employment_status}}
+                                            <label class="required">Employment Status<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.notice_period}}
+                                            <label class="required">Notice Period<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.interview_schedule}}
+                                            <label class="required">Interview Schedule<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.employment_mode}}
+                                            <label class="required">Employment Mode<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.rate_card}}
+                                            <label class="required">Rate Card<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.currency}}
+                                            <label class="required">Currency<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.current_salary}}
+                                            <label class="required">Current Salary<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.expected_salary}}
+                                            <label class="required">Expected Salary<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-7">
+                                            {{form.base_country}}
+                                            <label class="required">Base Country Location<span class="text-danger">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating">
+                                            {{form.others}}
+                                            <label class="required">Any other specific, you wish to mention</label><br/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12" align="center">
+                                        <div class="mb-7">
+                                            <label class="required">Upload your CV<span class="text-danger">*</span></label> &#128073; &nbsp;
+                                            {{form.cv}}<br>
+                                            <small>Acceptable Formats: Doc, Docx, PDF</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-2">
+                                        <button type="submit" class="btn btn-primary" id="submitButton">Submit Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extraJS %}
+<script>
+    // Button text change after submit
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('cvForm');
+        var submitButton = document.getElementById('submitButton');
+
+        form.addEventListener('submit', function () {
+            // Disable the submit button to prevent multiple submissions
+            submitButton.disabled = true;
+
+            // Change the button text to "Registering Now.."
+            submitButton.innerHTML = 'Submitting Your Request...';
+        });
+    });
+</script>
+{% endblock %}

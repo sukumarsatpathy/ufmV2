@@ -1,0 +1,38 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="{{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper bg-light">
+    <div class="container pt-7 pb-20 pt-md-14 pb-md-21 text-center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container pb-14 pb-md-16">
+        <div class="row">
+            <div class="col-lg-6 col-xl-7 col-xxl-6 mx-auto mt-n20">
+                <div class="card">
+                    <div class="card-body p-11 text-center">
+                        <h2 class="display-1 mb-3 text-success">Thank You</h2>
+                        <div class="alert alert-success alert-icon">
+                          <i class="uil uil-check-circle"></i> Successfully submitted your resume. We will get back to you soon.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extraJS %}
+{% endblock %}

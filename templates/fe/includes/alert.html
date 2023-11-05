@@ -1,0 +1,23 @@
+<script>
+  setTimeout(function(){
+    $('#frontMessage').fadeOut('slow');
+  }, 4000)
+</script>
+
+{% if messages %}
+    {% for message in messages %}
+    <div id="frontMessage">
+        <div {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show"{% endif %} role="alert">
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <span class="mb-2 text-{{message.tags}}">Error:</span>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+            <span class="mb-2 text-{{message.tags}}">Warning:</span>
+            {% else %}
+            <span class="mb-1 text-{{message.tags}}">{{message.tags|title}}</span>
+            {% endif %}
+            <span class="text-{{message.tags}}">{{message}}</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,102 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>{{singleService.title}} - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{% if singleService.meta_description %}{{singleService.meta_description}}{% else %}{{webSettingsUniversal.meta_description}}{% endif %}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="{{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper bg-light">
+    <div class="container pt-8 pt-md-8">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xl-12">
+                <div class="post-header">
+                    <div class="post-category text-line">
+                        <a href="{% url 'serviceHome' %}" class="hover" rel="service">Back to Services</a>
+                    </div>
+                    <div class="fs-35 mb-3">{{singleService.title}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if singleService.banner %}
+<section class="wrapper bg-light">
+    <div class="container-card">
+        <div class="position-relative">
+            <div class="swiper-container dots-closer blog grid-view mb-6" data-margin="0" data-dots="false"
+                 data-nav="false" data-autoplay="falsa" data-items-xl="1" data-items-md="1" data-items-xs="1">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card bg-full bg-image bg-overlay bg-overlay-light-500">
+                                <div class="card-body py-4 px-0">
+                                    <div class="container">
+                                        <img src="{{singleService.banner.url}}" class="img-fluid rounded" alt="{{singleService.title}} Banner" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+<section class="wrapper bg-light">
+    <div class="container pt-8 pb-12 pt-md-8 pb-md-4 text-center">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xl-12 mx-auto">
+                <div class="post-header">
+                    <div class="lead fs-lg px-lg-10 px-xxl-8">{{singleService.short_description|safe}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container pt-6 pt-md-3 pb-14 pb-md-16">
+        <div class="projects-overflow mt-md-5 mb-10 mb-lg-15">
+            <div class="project item">
+                <div class="row">
+                    <figure class="col-lg-8 col-xl-7 offset-xl-1 rounded">
+                        <img src="{{singleService.image.url}}" alt="{{singleService.title}}" />
+                    </figure>
+                    <div class="project-details d-flex justify-content-center flex-column"
+                         style="right: 10%; bottom: 35%;">
+                        <div class="card shadow rellax" data-rellax-xs-speed="0" data-rellax-mobile-speed="0">
+                            <div class="card-body">
+                                <div class="post-header">
+                                    <h2 class="post-title mb-3">What we do..</h2>
+                                </div>
+                                <div class="post-content outline-round">
+                                    <p>{{singleService.process|safe}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center pt-10">
+                <div class="col-lg-10 outline-round">
+                    <p class="fs-40 text-primary">Key Aspects Includes:</p>
+                    <p>{{singleService.key_aspects|safe}}</p>
+                    <a href="{% url 'contactView' %}" class="btn btn-outline-primary rounded-pill btn-icon btn-icon-start btn-sm mt-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-question-fill" viewBox="0 0 16 16">
+                            <path d="M5.933.87a2.89 2.89 0 0 1 4.134 0l.622.638.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636zM7.002 11a1 1 0 1 0 2 0 1 1 0 0 0-2 0zm1.602-2.027c.04-.534.198-.815.846-1.26.674-.475 1.05-1.09 1.05-1.986 0-1.325-.92-2.227-2.262-2.227-1.02 0-1.792.492-2.1 1.29A1.71 1.71 0 0 0 6 5.48c0 .393.203.64.545.64.272 0 .455-.147.564-.51.158-.592.525-.915 1.074-.915.61 0 1.03.446 1.03 1.084 0 .563-.208.885-.822 1.325-.619.433-.926.914-.926 1.64v.111c0 .428.208.745.585.745.336 0 .504-.24.554-.627z"/>
+                        </svg>
+                        <span class="px-3">Reach Out To Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extraJS %}
+
+{% endblock %}

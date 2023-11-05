@@ -1,64 +1,98 @@
 {% load static %}
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}
 
     {% endblock %}
-    <link rel="shortcut icon" type="image/x-icon" href="{{webSettingsUniversal.favicon.url}}" />
-    <link rel="stylesheet" href="{% static 'fe/css/plugins/animate.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'fe/css/main.css' %}" />
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <meta name="author" content="Hardkode Technologies">
+    <link rel="shortcut icon" href="{{webSettingsUniversal.favicon.url}}">
+    <link rel="stylesheet" href="{% static 'fe/css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'fe/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fe/css/colors/orange.css' %}">
+    <link rel="preload" href="{% static 'fe/css/fonts/karma.css' %}" as="style" onload="this.rel='stylesheet'">
 </head>
 
 <body>
-    <header class="header-area header-style-1 header-height-2">
-        {% include 'fe/includes/header.html' %}
-    </header>
-    {% include 'fe/includes/mobile-header.html' %}
-    <!--End header-->
-    {% block content %}
+    <div class="content-wrapper">
+        <header class="wrapper">
+            <nav class="navbar navbar-expand-lg center-nav transparent navbar-light">
+                {% include 'fe/includes/navbar.html' %}
+            </nav>
+        </header>
+        <!-- /header -->
+        {% block content %}
 
-    {% endblock %}
-    <footer class="main">
+        {% endblock %}
+    </div>
+
+    <footer class="bg-navy text-inverse">
         {% include 'fe/includes/footer.html' %}
     </footer>
-    <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="text-center">
-                    <img src="{% static 'fe/imgs/theme/loading.gif" alt="" />
-                </div>
-            </div>
-        </div>
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+        </svg>
     </div>
-    <!-- Vendor JS-->
-    <script src="{% static 'fe/js/vendor/modernizr-3.6.0.min.js' %}"></script>
-    <script src="{% static 'fe/js/vendor/jquery-3.6.0.min.js' %}"></script>
-    <script src="{% static 'fe/js/vendor/jquery-migrate-3.3.0.min.js' %}"></script>
-    <script src="{% static 'fe/js/vendor/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/slick.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/jquery.syotimer.min.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/waypoints.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/wow.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/perfect-scrollbar.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/magnific-popup.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/select2.min.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/counterup.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/jquery.countdown.min.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/images-loaded.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/isotope.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/scrollup.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/jquery.vticker-min.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/jquery.theia.sticky.js' %}"></script>
-    <script src="{% static 'fe/js/plugins/jquery.elevatezoom.js' %}"></script>
-    <!-- Template  JS -->
-    <script src="{% static 'fe/js/main.js' %}"></script>
-    <script src="{% static 'fe/js/shop.js' %}"></script>
+    <script src="{% static 'fe/js/plugins.js' %}"></script>
+    <script src="{% static 'fe/js/theme.js' %}"></script>
+    <script>
+    // References to our elements
+    var button = document.getElementById('toggleQR');
+    var modal = document.getElementById('qrModal');
+    var closeModalButton = modal.querySelector('.close'); // Ensure we select the close button inside the modal
+
+    // Initially, the modal is assumed to be closed
+    var isModalOpen = false;
+
+    // Function to toggle button visibility based on scroll
+    function handleScroll() {
+        var tenPercentOfPage = window.innerHeight * 0.1;
+
+        // Only toggle visibility if the modal isn't open
+        if (!isModalOpen) {
+            if (window.scrollY > tenPercentOfPage) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    }
+
+    // Function to show the modal and hide the button
+    function openModal() {
+        modal.style.display = 'block';
+        button.style.display = 'none';
+        isModalOpen = true;
+    }
+
+    // Function to close the modal and show the button (if scrolled > 10%)
+    function closeModal() {
+        modal.style.display = 'none';
+        handleScroll();  // Check if the button should be shown or hidden based on scroll position
+        isModalOpen = false;
+    }
+
+    // Attach the scroll listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Assuming the button itself opens the modal
+    button.addEventListener('click', openModal);
+
+    // Attach close listener to the close button
+    if (closeModalButton) { // Ensure the close button exists
+        closeModalButton.addEventListener('click', closeModal);
+    } else {
+        console.error("Close button not found!");
+    }
+    </script>
+    {% block extraJS %}
+
+    {% endblock %}
 </body>
 
 </html>

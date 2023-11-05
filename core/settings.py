@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     'profiles',
     'category',
     'settings',
+    'store',
+    'carts',
+    'orders',
     # 3rd Party Apps
     'ckeditor',
     'ckeditor_uploader',

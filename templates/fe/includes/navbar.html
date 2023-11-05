@@ -1,0 +1,41 @@
+{% load static %}
+<div class="container flex-lg-row flex-nowrap align-items-center">
+    <div class="navbar-brand w-100">
+        <a href="{% url 'home' %}" target="_parent">
+            <img src="{{webSettingsUniversal.logo_dark.url}}" alt="{{webSettingsUniversal.title}}" class="img-fluid"
+                 width="70"/>
+        </a>
+    </div>
+    <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+        <div class="offcanvas-header d-lg-none">
+            <img src="{{webSettingsUniversal.logo_light.url}}" alt="{{webSettingsUniversal.title}}" class="img-fluid"
+                 width="70"/>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+            <ul class="navbar-nav">
+                {% url 'home' as url %}
+                <li class="nav-item dropdown dropdown-mega">
+                    <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{url}}">Home</a>
+                </li>
+                {% url 'login' as url %}
+                <li class="nav-item dropdown dropdown-mega">
+                    <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{url}}">Login</a>
+                </li>
+            </ul>
+            <div class="offcanvas-footer d-lg-none">
+                <div>
+                    <a href="mailto:connect.in@techys.digital" class="link-inverse">connect.in@techys.digital</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-other w-100 d-flex ms-auto">
+        <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <li class="nav-item d-lg-none">
+                <button class="hamburger offcanvas-nav-btn" aria-label="Hamburger Menu"><span></span></button>
+            </li>
+        </ul>
+    </div>
+</div>

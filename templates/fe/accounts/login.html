@@ -1,0 +1,76 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>Account Login - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{frontendSettingsUniversal.metaDescription}}">
+<meta name="keywords" content="{{frontendSettingsUniversal.metaKeyword}}">
+<meta name="author" content="Hardkode Technologies">
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Account Login - {{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{frontendSettingsUniversal.title}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper text-white">
+    <div class="container pt-12 pb-20 pt-md-14 pb-md-21 text-center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="display-1 mb-3">Sign In</h1>
+                <nav class="d-inline-block" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sign In</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="wrapper">
+    <div class="container pb-14 pb-md-16">
+        <div class="row">
+            <div class="col-lg-7 col-xl-6 col-xxl-5 mx-auto mt-n20">
+                <div class="card">
+                    <div class="card-body p-11 text-center">
+                        {% if request.GET.command == 'verification' %}
+                        <div class="alert alert-warning" role="alert">
+                            <i class="uil uil-exclamation-triangle"></i><br>
+                            Thank you for registering with us. We have sent a verification email to <strong>{{request.GET.email}}</strong>.<br>
+                            If it's not in your <strong>INBOX</strong> then please check your <strong>SPAM</strong> folder.<br>
+                        </div>
+                        <div>
+                            Already Verified ?
+                            <a href="{% url 'login' %}" class="btn btn-expand btn-primary rounded-pill">
+                                <i class="uil uil-arrow-right"></i>
+                                <span>Login</span>
+                            </a>
+                        </div>
+                        {% else %}
+                            <h2 class="mb-3 text-center">Welcome Back</h2>
+                            <p class="lead mb-6 text-center">Fill your email and password to sign in.</p>
+                            {% include 'fe/includes/alert.html' %}
+                            <form class="text-start mb-3" action="{% url 'login' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-floating mb-4">
+                                    <input type="email" name="email" class="form-control" placeholder="Email" id="loginEmail">
+                                    <label for="loginEmail">Email</label>
+                                </div>
+                                <div class="form-floating password-field mb-4">
+                                    <input type="password" name="password" class="form-control" placeholder="Password"
+                                           id="loginPassword">
+                                    <span class="password-toggle"><i class="uil uil-eye"></i></span>
+                                    <label for="loginPassword">Password</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary rounded-pill btn-login w-100 mb-2">Sign In</button>
+                            </form>
+                            <p class="mb-1"><a href="#" class="hover">Forgot Password?</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

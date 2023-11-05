@@ -31,55 +31,96 @@
                                   enctype="multipart/form-data" novalidate>
                                 {% csrf_token %}
                                 <div class="card-body border-top p-9">
-                                    {% if userForm.errors %}
-                                        {% for field in userForm %}
-                                            {% for error in field.errors %}
-                                            <div class="alert alert-danger">
-                                                <strong>{{field.name|title}} - {{error|escape}}</strong>
-                                            </div>
-                                            {% endfor %}
-                                        {% endfor %}
-                                        {% for error in userForm.non_field_errors %}
-                                        <div class="alert alert-danger">
-                                            <strong>{{error|escape}}</strong>
-                                        </div>
-                                        {% endfor %}
-                                    {% endif %}
                                     <div class="row">
+                                        <!-- First Name Field -->
                                         <div class="col-lg-6">
-                                            <div class="form-floating mb-7">
-                                                {{userForm.first_name}}
-                                                <label class="required">First Name</label>
+                                            <div class="form-floating mb-7 {% if userForm.first_name.errors %}has-error{% endif %}">
+                                                {{ userForm.first_name }}
+                                                <label for="{{ userForm.first_name.id_for_label }}">First Name</label>
+                                                {% for error in userForm.first_name.errors %}
+                                                <div class="text-danger mt-2">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
+
+                                        <!-- Last Name Field -->
                                         <div class="col-lg-6">
-                                            <div class="form-floating mb-7">
-                                                {{userForm.last_name}}
-                                                <label class="required">Last Name</label>
+                                            <div class="form-floating mb-7 {% if userForm.last_name.errors %}has-error{% endif %}">
+                                                {{ userForm.last_name }}
+                                                <label for="{{ userForm.last_name.id_for_label }}">Last Name</label>
+                                                {% for error in userForm.last_name.errors %}
+                                                <div class="text-danger mt-2">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
+
+                                        <!-- Email Field -->
                                         <div class="col-lg-6">
-                                            <div class="form-floating mb-7">
-                                                {{userForm.email}}
-                                                <label class="required">Email Address</label>
+                                            <div class="form-floating mb-7 {% if userForm.email.errors %}has-error{% endif %}">
+                                                {{ userForm.email }}
+                                                <label for="{{ userForm.email.id_for_label }}">Email</label>
+                                                {% for error in userForm.email.errors %}
+                                                <div class="text-danger mt-2">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
-                                         <div class="col-lg-6">
-                                            <div class="form-floating mb-7">
-                                                {{userForm.password}}
-                                                <label class="required">Password</label>
+
+                                        <!-- Phone Number Field -->
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7 {% if userForm.phone_number.errors %}has-error{% endif %}">
+                                                {{ userForm.phone_number }}
+                                                <label for="{{ userForm.phone_number.id_for_label }}">Contact No</label>
+                                                {% for error in userForm.phone_number.errors %}
+                                                <div class="text-danger mt-2">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
+
+                                        <!-- Password Field -->
                                         <div class="col-lg-6">
-                                            <div class="form-floating mb-7">
-                                                {{userForm.confirm_password}}
-                                                <label class="required">Confirm Password</label>
+                                            <div class="form-floating mb-7 {% if userForm.password.errors %}has-error{% endif %}">
+                                                {{ userForm.password }}
+                                                <label for="{{ userForm.password.id_for_label }}">Password</label>
+                                                {% for error in userForm.password.errors %}
+                                                <div class="text-danger mt-2">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
+
+                                        <!-- Confirm Password Field -->
                                         <div class="col-lg-6">
-                                            <div class="form-floating mb-7">
-                                                {{userForm.status}}
-                                                <label class="required">Status</label>
+                                            <div class="form-floating mb-7 {% if userForm.confirm_password.errors %}has-error{% endif %}">
+                                                {{ userForm.confirm_password }}
+                                                <label for="{{ userForm.confirm_password.id_for_label }}">Confirm
+                                                    Password</label>
+                                                {% for error in userForm.confirm_password.errors %}
+                                                <div class="text-danger mt-2">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <!-- Status Field -->
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7 {% if userForm.status.errors %}has-error{% endif %}">
+                                                {{ userForm.status }}
+                                                <label for="{{ userForm.status.id_for_label }}">Status</label>
+                                                {% for error in userForm.status.errors %}
+                                                <div class="text-danger mt-2">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>

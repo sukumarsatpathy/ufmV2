@@ -1,0 +1,205 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>Contact - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="Contact - {{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper bg-light mt-6">
+    <div class="container-card">
+        <div class="position-relative">
+            <div class="swiper-container dots-closer blog grid-view mb-6" data-margin="0" data-dots="false"
+                 data-nav="false" data-autoplay="falsa" data-items-xl="1" data-items-md="1" data-items-xs="1">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card bg-full bg-image bg-overlay bg-overlay-light-500">
+                                <div class="card-body py-4 px-0">
+                                    <div class="container">
+                                        <img src="{% static 'fe/img/banner/contact.jpg' %}" class="img-fluid rounded" alt="Contact Us" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper">
+    <div class="container mt-15 pt-0 pt-md-16">
+        <div class="row mb-14 mb-md-16">
+            <div class="col-xl-10 mx-auto mt-n19">
+                <div class="card">
+                    <div class="row gx-0">
+                        <div class="col-lg-6 align-self-stretch">
+                            <div class="map map-full rounded-top rounded-lg-start">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112178.64480204441!2d77.40182545!3d28.5222018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a43173357b%3A0x37ffce30c87cc03f!2sNoida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1694937578689!5m2!1sen!2sin"
+                                        style="width:100%; height: 100%; border:0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-10 p-md-11 p-lg-14">
+                                <div class="d-flex flex-row">
+                                    <div>
+                                        <div class="icon text-primary fs-28 me-4 mt-n1"><i class="uil uil-envelope"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">For New Clients:</h5>
+                                        <p class="mb-1"><a href="mailto:wesource@techys.digital" class="link-body">wesource@techys.digital</a>
+                                        </p>
+                                        <h5 class="mb-2">Customer Service:</h5>
+                                        <p class="mb-2">For <span class="text-primary fw-600">India</span>: <br><a href="mailto:connect.in@techys.digital"
+                                                                      class="link-body">connect.in@techys.digital</a>
+                                        <p class="mb-1">For <span class="text-primary fw-600">Middle East</span>:<br> <a href="mailto:connect.me@techys.digital"
+                                                                            class="link-body">connect.me@techys.digital</a>
+                                        </p>
+                                        <p class="mb-1">For <span class="text-primary fw-600">Europe</span>: <br><a href="mailto:connect.eu@techys.digital"
+                                                                            class="link-body">connect.eu@techys.digital</a>
+                                        </p>
+                                        <p class="mb-1">For <span class="text-primary fw-600">USA</span>: <br><a href="mailto:connect.us@techys.digital"
+                                                                            class="link-body">connect.us@techys.digital</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container pb-15">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+                <h2 class="display-4 mb-3 text-center"><span class="text-primary">Drop Us</span> a Line</h2>
+                <p class="lead text-center mb-10">Reach out to us from our contact form and we will get back to you
+                    shortly.</p>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% include 'fe/includes/alert.html' %}
+                    {% endfor %}
+                {% else %}
+                    <form id="cvForm" action="{% url 'contactView' %}" method="post" class="text-start mb-3"
+                          enctype="multipart/form-data" novalidate>
+                        {% csrf_token %}
+                        <div class="card-body">
+                            {% if form.errors %}
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{field.name|title}} - {{error|escape}}</strong>
+                                    </div>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{error|escape}}</strong>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-floating mb-7">
+                                        {{form.service_type}}
+                                        <label class="required">Service Type <span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-7">
+                                        {{form.full_name}}
+                                        <label class="required">Full Name<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-7">
+                                        {{form.role}}
+                                        <label class="required">Role<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-7">
+                                        {{form.mobile}}
+                                        <label class="required">Mobile No<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-7">
+                                        {{form.whatsapp}}
+                                        <label class="required">Whatsapp<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-7">
+                                        {{form.email}}
+                                        <label class="required">Email<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-7">
+                                        {{form.location}}
+                                        <label class="required">Location<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-floating mb-7">
+                                        {{form.organisation}}
+                                        <label class="required">Organisation<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-floating mb-7">
+                                        {{form.message}}
+                                        <label class="required">Message<span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-4">
+                                    <button type="submit" class="btn btn-primary" id="submitButton">Submit Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extraJS %}
+<script>
+// Button text change after submit
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('cvForm');
+    var submitButton = document.getElementById('submitButton');
+
+    form.addEventListener('submit', function (e) {
+        // Check if all required fields are filled
+        var inputs = form.querySelectorAll('input, select, textarea');
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            if (input.hasAttribute('required') && !input.value) {
+                e.preventDefault(); // Prevent the form from submitting
+                alert(input.previousElementSibling.textContent.trim() + ' is required.'); // Alert the user about the missing field
+                return;
+            }
+        }
+
+        // Disable the submit button to prevent multiple submissions
+        submitButton.disabled = true;
+
+        // Change the button text to "Registering Now.."
+        submitButton.innerHTML = 'Submitting Your Request...';
+    });
+});
+</script>
+{% endblock %}

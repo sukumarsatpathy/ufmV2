@@ -1,0 +1,174 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>Offerings - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="{{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+<style>
+    .card-menu {
+        --bs-card-spacer-y: 2rem;
+        --bs-card-spacer-x: 2rem;
+        --bs-card-title-spacer-y: 0.5rem;
+        --bs-card-title-color: #343f52;
+        --bs-card-subtitle-color: ;
+        --bs-card-border-width: 1px;
+        --bs-card-border-color: rgba(164, 174, 198, 0.2);
+        --bs-card-border-radius: 0.4rem;
+        --bs-card-box-shadow: ;
+        --bs-card-inner-border-radius: 0.4rem;
+        --bs-card-cap-padding-y: 0.9rem;
+        --bs-card-cap-padding-x: 2rem;
+        --bs-card-cap-bg: transparent;
+        --bs-card-cap-color: ;
+        --bs-card-height: ;
+        --bs-card-color: ;
+        --bs-card-bg: var(--bs-white);
+        --bs-card-img-overlay-padding: 1rem;
+        --bs-card-group-margin: 0.75rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        height: var(--bs-card-height);
+        color: var(--bs-body-color);
+        word-wrap: break-word;
+        background-color: var(--bs-card-bg);
+        background-clip: border-box;
+        border-radius: var(--bs-card-border-radius);
+        box-shadow: var(--bs-card-box-shadow);
+        border: 1px solid #ff0000 !important;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<section class="wrapper bg-light mt-6">
+    <div class="container-card">
+        <div class="position-relative">
+            <div class="swiper-container dots-closer blog grid-view mb-6" data-margin="0" data-dots="false"
+                 data-nav="false" data-autoplay="falsa" data-items-xl="1" data-items-md="1" data-items-xs="1">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card bg-full bg-image bg-overlay bg-overlay-light-500">
+                                <div class="card-body py-4 px-0">
+                                    <div class="container">
+                                        <img src="{% static 'fe/img/banner/offering.jpg' %}" class="img-fluid rounded" alt="Offerings" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container py-14 py-md-16">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
+            <div class="col-lg-6 position-relative">
+                <div class="shape bg-line leaf rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="top: -2rem; right: -0.6rem;"></div>
+                <div class="shape bg-pale-violet rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="bottom: -2rem; left: -0.4rem;"></div>
+                <figure class="rounded mb-0">
+                    <img src="{% static 'fe/img/pages/hr-service.jpg' %}" alt="HR Service" loading="lazy">
+                </figure>
+            </div>
+
+            <div class="col-lg-6">
+                <h3 class="display-4 mb-4"><span class="text-primary">HR</span> Services</h3>
+                <p class="mb-5">Our HR service offerings is committed to achieving sustainable results in partnership
+                    with its clients. We bring expertise in strategy, technology, operations, advisory services and
+                    analytics in HR functions to drive result oriented growth. We provide strategic guidance to support
+                    organizations as they contend with the change transforming their industries and businesses. </p>
+                <div class="row">
+                    {% for rs in allRS %}
+                    <div class="col-lg-6 mb-4">
+                        <div class="card-menu border-primary mb-1">
+                            <div class="card-body p-4 text-center">
+                                <p class="mb-0"><a href="{% url 'serviceDetail' rs.slug %}">{{rs.title}}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
+            <div class="col-lg-6 order-lg-2 position-relative">
+                <div class="shape bg-line aqua rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="top: -2rem; left: -0.6rem;"></div>
+                <div class="shape bg-pale-red rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="bottom: -2rem; right: -0.4rem;"></div>
+                <figure class="rounded mb-0">
+                    <img src="{% static 'fe/img/pages/consulting-services.jpg' %}" alt="Consulting Service"
+                         loading="lazy">
+                </figure>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="display-4 mb-4"><span class="text-primary">Consulting</span> Services</h3>
+                <p class="mb-5">Techys Digital consultants specializes in technology solution delivery, enterprise
+                    program leadership, and information insight. In keeping with the vision "to transform business by
+                    doing what is right," our stated focus is helping businesses achieve their objectives through the
+                    enablement / enhancement of process and technology by providing clients the right skills at the
+                    right time in the right volume for the right duration, resulting in the best possible solution for
+                    the lowest cost. The "doing what is right" vision determines the company culture.</p>
+                <div class="row">
+                    {% for cs in allCS %}
+                    <div class="col-lg-6 mb-4">
+                        <div class="card-menu border-primary mb-1">
+                            <div class="card-body p-4 text-center">
+                                <p class="mb-0"><a href="{% url 'serviceDetail' cs.slug %}">{{cs.title}}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-4 mb-md-8 align-items-center">
+            <div class="col-lg-6 position-relative">
+                <div class="shape bg-line leaf rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="top: -2rem; right: -0.6rem;"></div>
+                <div class="shape bg-pale-violet rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="bottom: -2rem; left: -0.4rem;"></div>
+                <figure class="rounded mb-0">
+                    <img src="{% static 'fe/img/pages/digital-services.jpg' %}" alt="Digital Service" loading="lazy">
+                </figure>
+            </div>
+
+            <div class="col-lg-6">
+                <h3 class="display-4 mb-4"><span class="text-primary">Digital</span> Services</h3>
+                <p class="mb-5">We bring a strategic viewpoint. Technology implementation is only one aspect of
+                    digitalisation. We help you understand the strategic implications of digital to turn it into a true
+                    source of competitive advantage. We deploy a multi-disciplinary team. Digital transformation impacts
+                    every aspect of your business. Hence our team spans strategists, technologists, operations experts,
+                    data scientists, marketeers and leaders in organisational and behavioural change.</p>
+                <div class="row">
+                    {% for ds in allDS %}
+                    <div class="col-lg-6 mb-4">
+                        <div class="card-menu border-primary mb-1">
+                            <div class="card-body p-4 text-center">
+                                <p class="mb-0"><a href="{% url 'serviceDetail' ds.slug %}">{{ds.title}}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
+{% block extraJS %}
+<script>
+
+</script>
+{% endblock %}

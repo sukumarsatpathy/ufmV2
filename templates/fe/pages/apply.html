@@ -1,0 +1,229 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>Apply Job - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="{{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper">
+    <div class="container pt-7 pb-20 pt-md-14 pb-md-21 text-center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container pb-14 pb-md-16">
+        <div class="row">
+            <div class="col-lg-10 col-xl-10 col-xxl-10 mx-auto mt-n20">
+                <div class="card">
+                    <div class="card-body p-11 text-center">
+                        <h2 class="mb-3">You are applying for {{job.role}}</h2>
+                        {% if messages %}
+                            {% for message in messages %}
+                                {% include 'fe/includes/alert.html' %}
+                            {% endfor %}
+                        {% else %}
+                            <form id="cvApplyForm" action="{% url 'applyJob' job.slug %}" method="post" class="text-start mb-3"
+                                  enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="card-body">
+                                    {% if form.errors %}
+                                        {% for field in form %}
+                                            {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{field.name|title}} - {{error|escape}}</strong>
+                                            </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        {% for error in form.non_field_errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{error|escape}}</strong>
+                                        </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-floating mb-7">
+                                                {{form.position_applied_for}}
+                                                <label class="required">Position Applied For</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.fullname}}
+                                                <label class="required">Full Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.email}}
+                                                <label class="required">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.mobile}}
+                                                <label class="required">Mobile Number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.whatsapp}}
+                                                <label class="required">Whatsapp</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.dob}}
+                                                <label class="required">Date of Birth</label>
+                                                <span class="text-muted fs-13 px-2">YYYY-MM-DD Ex: 1950-12-31</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.pan}}
+                                                <label class="required">PAN Number</label>
+                                                <span class="text-muted fs-13 px-2">XXXXX0000X</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.current_role}}
+                                                <label class="required">Current Role</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.qualification}}
+                                                <label class="required">Qualification</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.experience}}
+                                                <label class="required">What is your total experience(in Years)?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.last_company_experience}}
+                                                <label class="required">What is your experience with last company(in Years)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.last_ctc}}
+                                                <label class="required">Last CTC in LPA (₹)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.expected_ctc}}
+                                                <label class="required">Expected CTC in LPA (₹)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.source}}
+                                                <label class="required">Source you got to know about this job opportunity?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.current_company}}
+                                                <label class="required">Current Company</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating">
+                                                {{form.key_skills}}
+                                                <label class="required">Mention top 5 key skills you have for this job role?</label><br/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating">
+                                                {{form.gender}}
+                                                <label class="required">Gender</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.job_change_reason}}
+                                                <label class="required">What is your reason for job change?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.offer_in_hand}}
+                                                <label class="required">Do you have a Offer in hand?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.max_size_handled}}
+                                                <label class="required">Max Team Size handled, if any?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.willing_to_relocate}}
+                                                <label class="required">Willing to relocate?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.career_break}}
+                                                <label class="required">Any career break?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-7">
+                                                {{form.last_working_day}}
+                                                <label class="required">Last Working Day</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12" align="center">
+                                            <div class="mb-7">
+                                                <label class="required">Upload your CV</label> &#128073; &nbsp;
+                                                {{form.cv}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-4">
+                                            <button type="submit" class="btn btn-primary" id="submitButton">Apply Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extraJS %}
+<script>
+    // Button text change after submit
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('cvApplyForm');
+        var submitButton = document.getElementById('submitButton');
+
+        form.addEventListener('submit', function () {
+            // Disable the submit button to prevent multiple submissions
+            submitButton.disabled = true;
+
+            // Change the button text to "Registering Now.."
+            submitButton.innerHTML = 'Submitting Your Request...';
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>Jobs - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="Jobs - {{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper bg-light mt-6">
+    <div class="container-card">
+        <div class="position-relative">
+            <div class="swiper-container dots-closer blog grid-view mb-6" data-margin="0" data-dots="false"
+                 data-nav="false" data-autoplay="falsa" data-items-xl="1" data-items-md="1" data-items-xs="1">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card bg-full bg-image bg-overlay bg-overlay-light-500">
+                                <div class="card-body py-4 px-0">
+                                    <div class="container">
+                                        <img src="{% static 'fe/img/banner/career.jpg' %}" class="img-fluid rounded"
+                                             alt="Career"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if allJobs %}
+<section class="wrapper bg-light">
+    <div class="container py-14 py-md-16">
+        <div class="row gy-6">
+            {% for job in allJobs %}
+            <div class="col-md-6 col-lg-4">
+                <a href="{% url 'jobDetailView' job.slug %}" class="card shadow-lg lift h-100">
+                    <div class="card-body p-5 d-flex flex-row">
+                        <div>
+                            <span class="badge bg-pale-red text-red rounded pt-2 mb-2">{{job.employment_type}}</span>
+                            <h4 class="mb-1">{{job.role}}</h4>
+                            <p class="mb-0 text-body">{{job.location}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% else %}
+<section class="wrapper bg-light">
+    <div class="container py-7 py-md-8">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-6">
+                <div class="alert alert-warning alert-icon alert-dismissible fade show" role="alert">
+                    <i class="uil uil-exclamation-triangle"></i> There is no jobs opportunities right now. Check back again soon.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+{% block extraJS %}
+<script>
+
+</script>
+{% endblock %}

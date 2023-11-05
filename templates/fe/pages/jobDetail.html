@@ -1,0 +1,100 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>{{singleJob.role}} - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="{{singleJob.role}} - {{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper bg-light pt-10 pb-12 pt-md-14 pb-md-6">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4 col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h3>
+                                    <span>{{singleJob.role}}</span>
+                                </h3>
+                                <div class="fs-13 pb-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-briefcase" viewBox="0 0 16 16">
+                                        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z"/>
+                                    </svg>
+                                    <span>{{singleJob.experience}}</span> |
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                        <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
+                                    </svg>
+                                    <span>{{singleJob.package}}</span>
+                                </div>
+                                <div class="fs-13 pb-5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                    </svg>
+                                    <span>{{singleJob.location}}</span>
+                                </div>
+                                <div class="fs-13">
+                                    <strong>Posted:</strong> {{singleJob.published_date|timesince}} ago
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        {% include 'fe/includes/alert.html' %}
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="pb-3">
+                            <p><strong>Job Description:</strong> {{singleJob.jd|safe}}</p>
+                        </div>
+                        <div class="fs-18">
+                            <strong>Role:</strong> {{singleJob.role}}<br>
+                            <strong>Industry Type:</strong> {{singleJob.industry_type}}<br>
+                            <strong>Department:</strong> {{singleJob.department}}<br>
+                            <strong>Employment Type:</strong> {{singleJob.employment_type}}<br>
+                            <strong>Role Category:</strong> {{singleJob.role_category}}<br>
+                            <strong>Education:</strong> {{singleJob.education}}<br>
+                        </div>
+                        <div class="fs-18">
+                            <strong>Key Skills:</strong> {{singleJob.key_skills}}
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <p><strong>Beware of imposters!</strong> {{frontendSettingsUniversal.title}}.digital does not
+                            promise a job or an interview in exchange for money. Fraudsters may ask you to pay in the
+                            pretext of registration fee, Refundable Fee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="h6">Scan & Apply</div>
+                        <img src="{% url 'apply_qr_code' singleJob.slug %}" alt="QR Code to Apply for {{ job.role }}" width="200">
+                        <p class="text-center fw-bold">OR</p>
+                        <div class="text-center">
+                            <a href="{% url 'applyJob' singleJob.slug %}" class="btn btn-primary btn-sm rounded-pill">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    var position_applied_for = {{singleJob.role}}
+    document.getElementById('position_applied_for').value = position_applied_for;
+</script>
+{% endblock %}

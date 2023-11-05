@@ -1,0 +1,212 @@
+{% extends 'fe/base.html' %}
+{% load static %}
+{% block meta %}
+<title>About - {{webSettingsUniversal.title}}</title>
+<meta name="description" content="{{webSettingsUniversal.meta_description}}">
+<meta name="keywords" content="{{webSettingsUniversal.meta_keywords}}">
+<meta property="og:title" content="About - {{webSettingsUniversal.title}}"/>
+<meta property="og:url" content="{{request.scheme}}://{{request.get_host}}{{request.get_full_path}}"/>
+<meta property="og:site_name" content="{{webSettingsUniversal.title}} - {{webSettingsUniversal.slogan}}"/>
+{% endblock %}
+{% block content %}
+<section class="wrapper bg-light mt-6">
+    <div class="container-card">
+        <div class="position-relative">
+            <div class="swiper-container dots-closer blog grid-view mb-6" data-margin="0" data-dots="false"
+                 data-nav="false" data-autoplay="falsa" data-items-xl="1" data-items-md="1" data-items-xs="1">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card bg-full bg-image bg-overlay bg-overlay-light-500">
+                                <div class="card-body py-4 px-0">
+                                    <div class="container">
+                                        <img src="{% static 'fe/img/banner/about-us.jpg' %}" class="img-fluid rounded" alt="About Us" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container py-14 pt-md-16">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
+            <div class="col-lg-6 position-relative">
+                <div class="shape bg-line leaf rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="top: -2rem; right: -0.6rem;"></div>
+                <div class="shape bg-pale-violet rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="bottom: -2rem; left: -0.4rem;"></div>
+                <figure class="rounded mb-0">
+                    <img src="{% static 'fe/img/pages/core-values.jpg' %}" alt="Our Core Values">
+                </figure>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="display-4 mb-4">Our <span class="text-primary">Core Values</span></h3>
+                <ul class="td-custom-style">
+                    <li>We use an iterative design process that turns concepts into meaningful business
+                    outcomes.</li>
+                    <li>Throughout the journey, we’ll work with your stakeholders to ensure the final result
+                    meets your business goals.</li>
+                    <li>Our proven approach to get results. We’re here to help your business achieve new levels
+                    of success.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-7 mb-md-9 align-items-center">
+            <div class="col-lg-6 order-lg-2 position-relative">
+                <div class="shape bg-line aqua rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="top: -2rem; left: -0.6rem;"></div>
+                <div class="shape bg-pale-red rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="bottom: -2rem; right: -0.4rem;"></div>
+                <figure class="rounded mb-0">
+                    <img src="{% static 'fe/img/pages/our-mission.jpg' %}" alt="Our Mission">
+                </figure>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="display-4 mb-4">Our <span class="text-primary">Mission</span></h3>
+                <p class="mb-3">Our mission is to ensure that every service, or solution we provide is fit for purpose.
+                    We believe Quality and Suitability are the cornerstones of customer satisfaction and loyalty.We
+                    strive to provide innovative and effective solutions that exceed expectations and deliver measurable
+                    results.</p>
+                <p class="mb-1">We are committed to continuous improvement and to maintaining the highest standards of
+                    excellence in everything we do. We believe that by focusing on fitment for purpose, we can create
+                    long-lasting partnerships with our customers and help them achieve their goals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container">
+        <h2 class="display-4 mb-10 text-center">Our <span class="text-primary">Vision</span></h2>
+        <div class="row gx-lg-8 gx-xl-12 gy-6 process-wrapper line">
+            <div class="col-md-6 col-lg-3">
+                <span class="icon btn btn-circle btn-lg btn-light btn-outline-primary pe-none mb-4">
+                    <span class="number">01</span>
+                </span>
+                <h4 class="mb-1">Our Vision To Be</h4>
+                <p class="mb-0">A global organization that provides best-in-class business solutions, leveraging
+                    technology, delivered by best-in-Class people.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <span class="icon btn btn-circle btn-lg btn-light btn-outline-primary pe-none mb-4">
+                    <span class="number">02</span>
+                </span>
+                <h4 class="mb-1">Leveraging A Culture</h4>
+                <p class="mb-0">That is powered by intellect and driven by values.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <span class="icon btn btn-circle btn-lg btn-light btn-outline-primary pe-none mb-4">
+                    <span class="number">03</span>
+                </span>
+                <h4 class="mb-1">Resulting In</h4>
+                <p class="mb-0">Consistent, profitable growth for our stakeholders.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <span class="icon btn btn-circle btn-lg btn-light btn-outline-primary pe-none mb-4">
+                    <span class="number">04</span>
+                </span>
+                <h4 class="mb-1">We Will Do This By</h4>
+                <p class="mb-0">Staying relevant to our clients for them to “navigate their next”</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container py-14 py-md-16">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
+            <div class="col-lg-6 position-relative">
+                <div class="shape bg-line leaf rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="top: -2rem; right: -0.6rem;"></div>
+                <div class="shape bg-pale-violet rounded-circle rellax w-17 h-17" data-rellax-speed="1"
+                     style="bottom: -2rem; left: -0.4rem;"></div>
+                <figure class="rounded mb-0">
+                    <img src="{% static 'fe/img/pages/about-3.jpg' %}" alt="">
+                </figure>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="display-4 mb-4">Who we are <span class="text-primary">& What we do</span></h3>
+                <p class="mb-3">We are a group of seasoned and expert industry professionals with demonstrated and
+                    proven expertise in our respective fields, across geographies and futuristic technologies. With ever
+                    changing digital requirements of companies, we act as an anchor providing you with the most feasible
+                    solution to your problems.</p>
+                <p class="mb-1">At Techys Digital, we try to identify, helping companies chart a growth journey by
+                    adopting relevant latest digital technologies, optimizing existing resources, and improving decision
+                    making through crucial data-driven insights.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="wrapper bg-light">
+    <div class="container mb-10">
+        <div class="row">
+            <div class="col-xl-10 mx-auto">
+                <div class="row align-items-center counter-wrapper gy-6 text-center">
+                    <div class="col-md-2">
+                        <img src="{% static 'fe/img/icons/lineal/check.svg' %}"
+                             class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt=""/>
+                        <h3 class="counter">20+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img src="{% static 'fe/img/icons/lineal/user.svg' %}"
+                             class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt=""/>
+                        <h3 class="counter">25+</h3>
+                        <p>Customers</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img src="{% static 'fe/img/icons/lineal/settings-3.svg' %}"
+                             class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt=""/>
+                        <h3 class="counter">100+</h3>
+                        <p>Technologies</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img src="{% static 'fe/img/icons/lineal/award-2.svg'%}"
+                             class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt=""/>
+                        <h3 class="counter">50+</h3>
+                        <p>Positions</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img src="{% static 'fe/img/icons/lineal/map.svg' %}"
+                             class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt=""/>
+                        <h3 class="counter">10+</h3>
+                        <p>Locations</p>
+                    </div>
+                    <div class="col-md-2">
+                        <img src="{% static 'fe/img/icons/lineal/clock-3.svg' %}"
+                             class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt=""/>
+                        <h3 class="counter">3-30</h3>
+                        <p>Days TAT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper bg-light">
+    <div class="container py-7 py-md-8">
+        <div class="row">
+            <div class="col-xl-10 mx-auto">
+                <div class="card bg-full bg-primary">
+                    <div class="card-body p-6 p-md-11 d-lg-flex flex-row align-items-lg-center justify-content-md-between text-center text-lg-start">
+                        <h3 class="display-6 mb-6 mb-lg-0 text-white">We are hiring. <br/> Let's bring your dream career
+                            to live together!</h3>
+                        <a href="{% url 'contactView' %}" class="btn btn-white rounded-pill mb-0 text-nowrap">Contact Us
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block extraJS %}
+<script>
+
+</script>
+{% endblock %}
